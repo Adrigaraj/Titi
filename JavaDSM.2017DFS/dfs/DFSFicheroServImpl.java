@@ -1,15 +1,17 @@
 // Clase de servidor que implementa el API de acceso remoto a un fichero
 
 package dfs;
-import java.rmi.*;
-import java.rmi.server.*;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.RandomAccessFile;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 public class DFSFicheroServImpl extends UnicastRemoteObject implements DFSFicheroServ {
-    private static final String DFSDir = "DFSDir/";
+	private static final String DFSDir = "DFSDir/";
+	private RandomAccessFile fich;
 
-    public DFSFicheroServImpl()
-      throws RemoteException, FileNotFoundException {
-    }
+	public DFSFicheroServImpl() throws RemoteException, FileNotFoundException {
+
+	}
 }
