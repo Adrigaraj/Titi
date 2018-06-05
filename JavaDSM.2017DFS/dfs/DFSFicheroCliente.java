@@ -4,6 +4,7 @@ package dfs;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.rmi.RemoteException;
 
 public class DFSFicheroCliente {
@@ -12,11 +13,7 @@ public class DFSFicheroCliente {
 	public DFSFicheroCliente(DFSCliente dfs, String nom, String modo)
 			throws RemoteException, IOException, FileNotFoundException {
 		this.dfs = dfs;
-		if (modo.equals("r")) {
-
-		} else if (modo.equals("rw")) {
-
-		}
+		dfs.getRefFich().setFich(new RandomAccessFile(nom, modo));
 	}
 
 	public int read(byte[] b) throws RemoteException, IOException {
@@ -24,11 +21,20 @@ public class DFSFicheroCliente {
 	}
 
 	public void write(byte[] b) throws RemoteException, IOException {
+		if (dfs != null) {
+			dfs.getRefFich().getFich().write(b, 0, b.length);
+		}
 	}
 
 	public void seek(long p) throws RemoteException, IOException {
+		if (dfs != null) {
+			dfs.getRefFich().getFich().seek(p);
+		}
 	}
 
 	public void close() throws RemoteException, IOException {
+		if (dfs != null) {
+			dfs.getRefFich().getFich().close();
+		}
 	}
 }

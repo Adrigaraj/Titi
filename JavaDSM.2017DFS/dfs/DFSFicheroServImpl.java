@@ -11,6 +11,18 @@ public class DFSFicheroServImpl extends UnicastRemoteObject implements DFSFicher
 	private static final String DFSDir = "DFSDir/";
 	private RandomAccessFile fich;
 
+	static {
+
+	}
+
+	public RandomAccessFile getFich() {
+		return fich;
+	}
+
+	public void setFich(RandomAccessFile fich) {
+		this.fich = fich;
+	}
+
 	public DFSFicheroServImpl() throws RemoteException, FileNotFoundException {
 
 	}
