@@ -1,3 +1,5 @@
+package cliente;
+
 import java.util.Scanner;
 
 import dfs.DFSCliente;
